@@ -140,6 +140,50 @@ Dentro do repositório há um arquivo de `portifolio.json` onde teremos o portif
 
 ![alt text](image.png)
 
+## Branches
+```mermaid
+%% https://mermaid.js.org/syntax/gitgraph.html#gitgraph-specific-configuration-options
+%% https://htmlcolorcodes.com/
+%%{ init: {
+        "logLevel": "debug",
+        "theme": "dark",
+        "gitGraph": {
+            "mainBranchName": "main"
+        },
+        "themeVariables": {
+            "git0": "#839192",
+            "git1": "#C0392B ",
+            "git2": "#2E86C1",
+            "gitInv0": "#FFFFFF",
+            "gitBranchLabel0": "#FFFFFF",
+            "commitLabelColor": "#FFFFFF"
+        }
+    }
+}%%
+gitGraph
+    commit id: "checkout"
+    branch wip/nome_developer-nome_feat-num_wit
+    checkout wip/nome_developer-nome_feat-num_wit
+    checkout wip/nome_developer-nome_feat-num_wit
+    commit id: "Developer Feature Toggle"
+    commit id: "Developer Feature"
+    checkout wip/nome_developer-nome_feat-num_wit
+    checkout main
+    checkout wip/nome_developer-nome_feat-num_wit
+    commit id: "PR para Qualidade" type: HIGHLIGHT
+    checkout main
+    checkout wip/nome_developer-nome_feat-num_wit
+    branch sprint
+    branch documentation
+    checkout sprint
+    commit id: "Testes TDD, BDD e ATDD"
+    checkout wip/nome_developer-nome_feat-num_wit
+    checkout documentation
+    commit id: "Unifica Portifólio"
+    checkout main
+    merge sprint id: "Libera para PR"
+    merge documentation id: "Publica Documentacao"
+```
 ## Contribuições
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
