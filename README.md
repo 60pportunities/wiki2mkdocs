@@ -136,6 +136,9 @@ Dentro do repositório há um arquivo de `portifolio.json` onde teremos o portif
   }
 ]
 ```
+## Imagem
+
+![alt text](image.png)
 
 ## Contribuições
 
