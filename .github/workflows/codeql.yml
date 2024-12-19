@@ -9,7 +9,7 @@
 # a matriz `language` definida abaixo para confirmar que você tem o conjunto correto de
 # idiomas CodeQL suportados.
 #
-name: "CodeQL Advanced"
+name: "Análise - CodeQL Advanced"
 
 on:
   push:
