@@ -1,0 +1,33 @@
+
+changelog_type: 'commit_message'
+header_prefix: 'Version:'
+commit_changelog: true
+comment_changelog: true
+include_unlabeled_changes: true
+unlabeled_group_title: 'Alterações não rotuladas'
+pull_request_title_regex: '^Release'
+version_regex: ".*"
+exclude_labels:
+  - bot
+  - dependabot
+  - ci
+group_config:
+  - title: Bugs
+    labels:
+      - bug
+      - bugfix
+      - fix
+  - title: Code Improvements # Melhoria do Código Refactoring, Best practices, Segurança ou Aprimoramentos
+    labels:
+      - improvements
+      - enhancement        
+      - cleanup
+  - title: New Features
+    labels:
+      - feature           # Novas Funcionalidades
+  - title: Atualização de Documentação
+    labels:
+      - docs
+      - documentacao
+      - doc
+      - wiki
