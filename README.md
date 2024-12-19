@@ -71,7 +71,72 @@ sequenceDiagram
     PO->>PM: Reporta o progresso e mudanças no produto
     PM->>PO: Ajusta a visão do produto com base em feedback(Wiki)
 ```
-    
+
+# Procedimento de Instalação
+Este processo esta em desenvolvimento o que acarreta em um processo muito manual e em breve estaremos automatizando.
+## Instalação do Compilador GOLANG
+As instruções oficiais de instalação do Go estão disponíveis [Site Oficial](http://www.golangbr.org/doc/instalacao).
+### Mac OSX
+O processo de instalação é bem simples. Primeiro, o que você precisa fazer é executar o comando abaixo pra instalar o homebrew (brew). O Brew depende do Xcode, então você deve se certificar de instalá-lo primeiro.
+
+```xcode-select --install```
+
+Depois, execute o comando a seguir para instalar o homebrew:
+
+```/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
+
+Agora você consegue instalar o Go:
+```brew install go```
+
+Siga todas as instruções recomendadas pelo seu gerenciador de pacotes. Nota cada grupo de instruções varia de sistema operacional para sistema operacional. Agora verifique a instalação:
+```
+$ go version
+go version go1.23.2 darwin/arm64
+```
+
+### Windows
+Faça download da versão que você deseja instalar, no [Site](https://go.dev/dl/),. Recomendo a instalação sempre a versão mais atual.
+
+Abra o arquivo MSI e siga os passos da instalação. Por padrão o instalador adiciona o Go na pasta C:\Go.
+
+O instalador adiciona o caminho C:\Go\bin na variável de ambiente "Path" e cria a variável de usuário "GOPATH" com o caminho C:\Users\%USER%\go.
+
+## Instalação do Produto
+Como estamos em fase de desenvolvimento, todo o processo por enquanto é manual, bastando você seguir os passos.
+
+```
+git clone https://github.dev/60pportunities/wiki2mkdocs
+cd wiki2mkdocs
+go env GOOS GOARCH (Lista a Arquitetura e o Sistema Operacional)
+go tool dist list  (Lista as Arquiteturas e os Sistemas Operacionais que o go tem disponível)
+
+Criação da Rotina em Mac OSX
+Caso não haja a necessidade em criar um executável em uma arquitetura diferente efetue:\
+go build .
+Será gerado um : wiki-to-mkdocs
+
+Caso haja a necessidade em um Sistema Mac OSX para Windows, execute:
+GOOS=windows go build .
+Será gerado um : wiki-to-mkdocs.exe
+```
+## Geração da Documentação
+Dentro do repositório há um arquivo de `portifolio.json` onde teremos o portifólio de documentação dos sistemas.
+
+```
+[
+  {
+    "nome_produto": "01-Exemplo",
+    "url_repositorio": "https://github.com/horaciovasconcellos/01-exemplo.wiki.git",
+    "gerar_documentacao": "Y"
+  },
+  {
+    "nome_produto": "02-Exemplo2",
+    "url_repositorio": "https://github.com/horaciovasconcellos/02-exemplo.wiki.gitB",
+    "gerar_documentacao": "N"
+  }
+]
+```
+
 ## Contribuições
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
