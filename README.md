@@ -36,7 +36,7 @@ Em nossa abordagem, trateremos de uma documentação contínua, que inclui:
 - [x] Pull Request/Code Review efetuará a geração de chagelogs e republicação do Portifólio;
 - [x] Geração do Report Book;
 - [x] Geração de Catálogo de APIs por grupo;
-      - [x] Documentação de APIs (OAS, Swagger ou ReDoc);
+   - [x] Documentação de APIs (OAS, Swagger ou ReDoc);
 
 ## Funcionalidades
 - Clonagem de repositórios wiki.
@@ -65,7 +65,7 @@ sequenceDiagram
     TS->>PO: Trabalha nas histórias de usuário durante o Sprint
     TS->>PO: Solicita esclarecimentos sobre requisitos (Épicos e PBIs)
     PO->>TS: Fornece esclarecimentos sobre histórias de usuário (Épicos e PBIs)
-    TS->>PO: Entrega incrementos de produto após o Sprint (Documentação de Código, Geradores de Dependencia, Vulnerabilidades, Templates )
+    TS->>PO: Entrega incrementos de produto após o Sprint (Documentação de Código, Geradores de Dependencia, Vulnerabilidades, Templates e Report Book)
     PO->>SI: Apresenta o incremento para as partes interessadas
     SI->>PO: Avalia o produto e fornece mais feedback
     PO->>PM: Reporta o progresso e mudanças no produto
