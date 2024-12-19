@@ -1,11 +1,10 @@
 name: Portifolio de Documentação
 on:
   schedule:
-    - cron: '0 22 * * *' # Executar todos os dias às 22:00 UTC
-  push:
-    branches:
-      - main 
-
+    - cron: '0 22 * * *'
+    
+  pull_request:
+    types: [closed]
 jobs:
   deploy:
     runs-on: ubuntu-latest
