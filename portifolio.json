@@ -1,0 +1,13 @@
+[
+  {
+    "nome_produto": "01-Exemplo",
+    "url_repositorio": "https://github.com/horaciovasconcellos/01-exemplo.wiki.git",
+    "gerar_documentacao": "Y"
+  },
+  {
+    "nome_produto": "Produto B",
+    "url_repositorio": "https://github.com/usuario/repoB",
+    "gerar_documentacao": "N"
+  }
+]
+
