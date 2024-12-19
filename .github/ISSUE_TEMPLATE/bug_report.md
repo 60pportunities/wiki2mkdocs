@@ -6,33 +6,36 @@ labels: ''
 assignees: ''
 
 ---
+# Template para Reportar Bugs
 
-**Descreva o BUG**
-Uma descrição clara e concisa do que é o bug.
+| Item                | Descricao                                        |
+| -----               | ----                                             |
+| Produto             |                                                  |
+| Plataforma          |                                                  |
+| Objetos             |                                                  |
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## SumárioSumário
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+### Passos para reproduzir**
+Passos para reproduzir o comportamento:
+1. Vá para '...'
+2. Clique em '....'
+3. Role para baixo até '....'
+4. Veja o erro
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+### Comportamento esperado
+Uma descrição clara e concisa do que você esperava que acontecesse.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+### Capturas de Tela
+Se aplicável, adicione capturas de tela para ajudar a explicar seu problema.
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+### Contexto adicional
+Adicione qualquer outro contexto sobre o problema aqui.
 
-**Additional context**
-Add any other context about the problem here.
+### Status: resolvido
+
+- [ ] Aberto
+- [ ] Em Análise
+- [ ] Em Desenvolvimento
+- [ ] Aguardando Testes
+- [ ] Resolvido
