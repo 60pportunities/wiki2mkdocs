@@ -1,5 +1,11 @@
 name: Portifolio de Documentação
 on:
+  workflow_dispatch:  # Esta é a chave para permitir a execução manual
+    inputs:
+      nome:
+        description: 'Nome do usuário'
+        required: true
+        default: 'usuário padrão'
   schedule:
     - cron: '0 22 * * *'
     
