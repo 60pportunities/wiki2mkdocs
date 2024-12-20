@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Portal Contribuição</title>
+    <link rel="stylesheet" href="lib/materialize.min.css"/>
+    <link rel="stylesheet" href="lib/material-icons.css"/>
+    <link rel="stylesheet" href="styles/global.css"/>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper blue">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="https://github.com/60pportunities/" tooltip="Fork it"><i class="material-icons left">code</i>Contribuir</a></li>
+        </ul>
+        <a target="_blank" href="https://yourcompany.corp/innersource-landingpage" class="brand-logo logo">
+        </a>
+        <span class="brand-logo center">Portal Contribuição<span id="header-text">Alavancar, Reutilizar ou Contribuir para <span id="count"></span> InnerSource projects</span></span>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="input-field col l3 m6 s6">
+          <select id="filter">
+            <option value="All" selected>All</option>
+            <option value="N/A">Outra</option>
+          </select>
+          <label>Filtrar por idiomas:</label>
+        </div>
+
+        <div class="input-field col l3 m6 s6">
+          <select id="sort">
+            <option value="score" selected>Atividade</option>
+            <option value="name">Nome</option>
+            <option value="full_name">Organizacao</option>
+            <option value="stargazers_count">Estrelas</option>
+            <option value="watchers_count">Observadoras</option>
+            <option value="open_issues_count">Problemas</option>
+            <option value="forks_count">Forks</option>
+          </select>
+          <label>Ordenar por:</label>
+        </div>
+        <div class="input-field col l4 m10 s8">
+          <input id="search" type="text" class="validate">
+          <label for="search">Procurar</label>
+        </div>
+        <div class="switch icons col l2 m2 s4">
+          <label>
+            <br/>
+            <i class="small material-icons">view_list</i>
+            <input id="display" type="checkbox" checked value="card">
+            <span class="lever"></span>
+            <i class="small material-icons active">view_modules</i>
+          </label>
+        </div>
+      </div>
+      <div id="cards" class="row"></div>
+      <table id="list" class="list highlight" style="display: none !important;">
+        <thead>
+        <tr>
+          <th>Logo</th>
+          <th>Nome</th>
+          <th class="hidePhone hideTablet">Descrição</th>
+          <th class="hidePhone hideTablet">Estrelas</th>
+          <th class="hidePhone hideTablet">Problemas</th>
+          <th class="hidePhone hideTablet">Forks</th>
+          <th>Pontuação</th>
+          <th>Ling</th>
+          <th class="hidePhone">Ação</th>
+        </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+
+      <div data-position="left" data-tooltip="Adicione um novo projeto InnerSource ao Portal do Projeto..." class="tooltipped fixed-action-btn">
+        <a target="_blank" href="https://github.com/60pportunities/" class="btn-floating btn-large orange">
+          <i class="large material-icons">add</i>
+        </a>
+      </div>
+    </div>
+    <div id="modal-details" class="modal"></div>
+    <script id="card-template" type="text/x-handlebars-template">
+      <div>
+        <div class="col l4 s12 m6">
+          <div class="card hoverable" onclick="showModal({{id}}, event)">
+            <div class="card-content">
+              <span class="card-media">
+                <img src="{{mediaURL}}"/>
+              </span>
+              <div class="card-title">{{title}}
+                <p class="repoLink"><a href="{{repoURL}}" target="_blank">{{repoTitle}}</a></p>
+              </div>
+              <div class="card-description">{{description}}</div>
+              <div class="icon-container">
+                <div class="tooltipped" data-position="top" data-tooltip="Stars">
+                  <i class="small material-icons">star</i>
+                  <span class="icon-subtitle">{{stars}}</span>
+                </div>
+                <div class="tooltipped" data-position="top" data-tooltip="Issues">
+                  <i class="small material-icons">error</i>
+                  <span class="icon-subtitle">{{issues}}</span>
+                </div>
+                <div class="tooltipped" data-position="top" data-tooltip="Forks">
+                  <i class="small material-icons">share</i>
+                  <span class="icon-subtitle">{{forks}}</span>
+                </div>
+                <div>
+                  {{{score}}}
+                </div>
+                <div>
+                  {{{language}}}
+                </div>
+              </div>
+            </div>
+            <div class="blue card-action darken-1">
+              <a class="white-text" href="{{contributeURL}}" target="_blank">CONTRIBUIR</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script id="list-template" type="text/x-handlebars-template">
+        <tr onclick="showModal({{id}}, event)">
+          <td><span class="card-media"><img src="{{mediaURL}}"/></span></td>
+          <td><b>{{title}}</b><br/>
+            <span class="repoLink"><a href="{{repoURL}}" target="_blank">{{repoTitle}}</a></span></td>
+          <td class="hidePhone hideTablet"><div class="card-description">{{description}}</div></td>
+          <td class="hidePhone hideTablet"><div class="tooltipped" data-position="top" data-tooltip="Stars">
+            <i class="small material-icons">star</i>
+            <span class="icon-subtitle">{{stars}}</span>
+          </div></td>
+          <td class="hidePhone hideTablet"><div class="tooltipped" data-position="top" data-tooltip="Issues">
+            <i class="small material-icons">error</i>
+            <span class="icon-subtitle">{{issues}}</span>
+          </div></td>
+          <td class="hidePhone hideTablet"><div class="tooltipped" data-position="top" data-tooltip="Forks">
+            <i class="small material-icons">share</i>
+            <span class="icon-subtitle">{{forks}}</span>
+          </div></td>
+          <td>{{{score}}}</td>
+          <td>{{{language}}}</td>
+          <td class="hidePhone"><div class="blue card-action darken-1">
+            <a class="white-text" href="{{contributeURL}}" target="_blank">CONTRIBUIR</a>
+          </div></td>
+        </tr>
+    </script>
+
+    <script id="score-template" type="text/x-handlebars-template">
+      <img class="score tooltipped" data-position="top" data-tooltip="Activity: {{level}}" alt="Activity: {{level}}" src="{{logo}}"/>
+    </script>
+
+    <script id="language-template" type="text/x-handlebars-template">
+      <div class="language tooltipped" style="{{#if color}}background-color: {{color}};{{/if}}{{#if fontSize}}font-size: {{fontSize}}{{/if}}" data-position="top" data-tooltip="Language: {{language}}">{{languageShort}}</div>
+    </script>
+
+    <script id="details-template" type="text/x-handlebars-template">
+      <div class="modal-content">
+        <aside>
+            <span class="card-media">
+              <img src="{{mediaURL}}"/>
+            </span>
+          <div class="icon-container">
+            <div class="tooltipped" data-position="top" data-tooltip="Estrelas">
+              <i class="small material-icons">star</i>
+              <span class="icon-subtitle">{{stars}}</span>
+            </div>
+            <div class="tooltipped" data-position="top" data-tooltip="Problemas">
+              <i class="small material-icons">error</i>
+              <span class="icon-subtitle">{{issues}}</span>
+            </div>
+            <div class="tooltipped" data-position="top" data-tooltip="Forks">
+              <i class="small material-icons">share</i>
+              <span class="icon-subtitle">{{forks}}</span>
+            </div>
+            <div>
+              {{{score}}}
+            </div>
+            <div>
+              {{{language}}}
+            </div>
+          </div>
+        </aside>
+
+        <article>
+          <h4>{{title}}</h4>
+          <p class="repoLink"><a href="{{repoURL}}" target="_blank">{{repoTitle}}</a></p>
+          <p>{{description}}</p>
+          {{#if topics}}<p><b>Topics:</b><br/>
+            {{#each topics}}{{#if this}}<span class='pill'>{{this}}</span> {{/if}}{{/each}}
+          </p>{{/if}}
+          {{#if skills}}<p><b>Habilidades necessárias:</b><br/> {{#each skills}}{{this}}<br/>{{/each}}</p>{{/if}}
+          <p><b>Contribuições desejadas:</b><br/> {{#each contributions}}{{this}}<br/>{{/each}}</p>
+          {{#if documentationURL}}<p><b>Documentação:</b><br/><a href="{{documentationURL}}" target="_blank">{{documentationURL}}</a></p>{{/if}}
+          <p><b>Criado em:</b> {{createdAt}}</p>
+          <p><b>Última atualização:</b> {{lastUpdate}}</p>
+          <p><b>Pontuação da atividade:</b> {{scoreNumeric}}</p>
+          <p><b>Média de compromissos no último ano:</b><br/>
+          <div id="participationChart" class="participationChart"></div></p>
+        </article>
+
+        <a class="modal-close waves-effect btn-flat">x</a>
+      </div>
+      <div class="modal-footer">
+        <div class="blue card-action darken-1">
+          <a class="white-text" href="{{contributeURL}}" target="_blank">CONTRIBUIR</a>
+        </div>
+      </div>
+    </script>
+
+    <script id="participation-template" type="text/x-handlebars-template">
+        <div class="thisWeek {{#if thisWeek.commits}}hasCommits{{/if}}"{{#if thisWeek.color}} style="background-color: {{thisWeek.color}}"{{/if}}><div class="text">{{thisWeek.commits}}</div></div>
+        {{#each weeksPrevious}}<div class="previousWeeks {{#if this.commits}}hasCommits{{/if}}"{{#if this.color}} style="background-color: {{this.color}}"{{/if}}><div class="text">{{this.commits}}</div></div>{{/each}}
+        {{#if weeksPrevious}}
+        <div class="legend">
+          <div class="thisWeekLegend">Esta Semana</div><div class="previousWeeksLegend">Anteriormente {{weeksPreviousLabel}}</div>
+        </div>
+        {{/if}}
+        {{#each weeksBefore}}<div class="previousMonths {{#if this.commits}}hasCommits{{/if}}"{{#if this.color}} style="background-color: {{this.color}}"{{/if}}"><div class="text">{{this.commits}}</div></div>{{/each}}
+        {{#if weeksBefore}}
+        <div class="legend">
+          <div class="previousMonthsLegend">No(a) {{weeksBeforeLabel}}</div>
+        </div>
+        {{/if}}
+    </script>
+
+    <!-- thirdparty libraries -->
+    <script src="lib/handlebars.js"></script>
+    <script src="lib/materialize.min.js"></script>
+    <script src="lib/moment.min.js"></script>
+    <script src="lib/seedrandom.min.js"></script>
+
+    <!-- our scripts -->
+    <script src="scripts/index.js"></script>
+  </body>
+</html>
