@@ -206,3 +206,19 @@ Para ver todas as opções disponíveis, verifique a Listing Documentation.
 O portal foca em projetos InnerSource localizados no GitHub. 
 
 Projetos que usam outros sistemas de gerenciamento de código-fonte podem ser exibidos no portal usando APIs semelhantes ou adicionando-os manualmente ao arquivo repos.json.
+
+### Atualização
+Os metadados do repositório mostrados neste portal são lidos de um arquivo estático `repos.json`.
+
+Em um ambiente produtivo, você provavelmente precisará executar seu próprio rastreador para preencher repos.json com os projetos do InnerSource que deseja mostrar no seu portal.
+
+A figura abaixo mostra o relacionamento entre rastreador, portal e repositórios. 
+
+Assumimos que os repositórios estão localizados em uma ou mais instâncias do GitHub e usam a API do GitHub para buscar metadados do repositório. 
+
+Se estiver usando um sistema de gerenciamento de código-fonte diferente, você pode preencher a estrutura descrita abaixo com os dados disponíveis desse sistema.
+
+![image](https://github.com/user-attachments/assets/6c9296de-6479-40d4-9de5-baedfd0fb29a)
+
+curl -u <username>:<oauth_token> https://api.github.com/search/repositories?q=org:<org>+topic:inner-source | jq '.items' > repos.json
+
