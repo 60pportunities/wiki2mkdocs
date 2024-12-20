@@ -184,6 +184,25 @@ gitGraph
     merge sprint id: "Libera para PR"
     merge documentation id: "Publica Documentacao"
 ```
-## Contribuições
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
+## Portal de Contribuições
+O portal ainda é uma ideia.. Mas segue o jogo..
+
+O botão "+" no canto inferior direito explica como listar novos projetos e como criar o arquivo de metadados InnerSource que contém informações adicionais sobre o projeto.
+Requisitos
+
+- [x] Instale o nodejs.
+- [x] npm install
+- [x] Executar o portal do projeto em um servidor web local (npm start)
+
+### Listando Projetos
+Adicionar seu projeto a este portal é tão fácil quanto adicionar o inner-source tópico ao seu repositório. 
+
+Para personalizar as informações sobre seu projeto que são exibidas no portal, você pode, opcionalmente, adicionar um innersource.json arquivo. 
+
+Para ver todas as opções disponíveis, verifique a Listing Documentation.
+
+### Limitações
+O portal foca em projetos InnerSource localizados no GitHub. 
+
+Projetos que usam outros sistemas de gerenciamento de código-fonte podem ser exibidos no portal usando APIs semelhantes ou adicionando-os manualmente ao arquivo repos.json.
