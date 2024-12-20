@@ -217,8 +217,25 @@ A figura abaixo mostra o relacionamento entre rastreador, portal e repositórios
 Assumimos que os repositórios estão localizados em uma ou mais instâncias do GitHub e usam a API do GitHub para buscar metadados do repositório. 
 
 Se estiver usando um sistema de gerenciamento de código-fonte diferente, você pode preencher a estrutura descrita abaixo com os dados disponíveis desse sistema.
+```mermaid
+flowchart LR
+    A(Contribuição) -- Projetos ----> B@{ shape: docs, label: "Repositórios</br>Contribuição"}
+    B <-- Rastreador</br>Innersource ----> C@{ shape: procs, label: "Actions Schedulle"}
+    C <-- Projetos ----> D@{ shape: lin-cyl, label: "Repositório" }
+    C <-- Projetos ----> FD@{ shape: lin-cyl, label: "Repositório" }
+```
+A pontuação de atividade do repositório é um valor numérico que representa a atividade  de um projeto InnerSource. 
 
-![image](https://github.com/user-attachments/assets/6c9296de-6479-40d4-9de5-baedfd0fb29a)
+Ela é derivada automaticamente de estatísticas de repositório como GitHub stars, watches e forks e pode ser enriquecida com KPIs de outras ferramentas ou avaliações manuais.
 
+Além disso, ele considera parâmetros de atividade como última atualização e data de criação do repositório para dar um impulso a projetos jovens com muita tração. Projetos com diretrizes de contribuição, estatísticas de participação ativa e problemas (backlog público) também recebem uma classificação mais alta.
+
+Tudo isso pode ser buscado e calculado automaticamente usando o conjunto de resultados da API de pesquisa do GitHub e da API de estatísticas do GitHub. 
+
+Outros sistemas de controle de versão de código como Bitbucket, GitLab, Gerrit, Azure também podem ser integrados se uma API semelhante estiver disponível.
+
+Acesso as [APIs GitHub](https://docs.github.com/en/rest/metrics/statistics?apiVersion=2022-11-28)
+
+https://docs.github.com/en/rest/meta/meta?apiVersion=2022-11-28#get-all-api-versions
 curl -u <username>:<oauth_token> https://api.github.com/search/repositories?q=org:<org>+topic:inner-source | jq '.items' > repos.json
 
